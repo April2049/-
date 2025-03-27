@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>生日惊喜</title>
+  <title>生日快乐，洁儒！</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body, html {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial Rounded MT Bold', sans-serif;
       width: 100%;
       height: 100%;
+      font-family: 'Arial Rounded MT Bold', sans-serif;
       overflow: hidden;
     }
     .page {
@@ -26,9 +25,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(to bottom, #ff004f, #ffcccb);
-      color: #fff;
       padding: 2rem;
+    }
+    #page1 {
+      background: linear-gradient(to bottom, #ff004f, #ffcccb);
+      color: white;
     }
     .pdd-box {
       background-color: #fff;
@@ -56,11 +57,13 @@
       font-size: 1.1rem;
       cursor: pointer;
     }
+
     @keyframes pop {
       0% { transform: scale(0.6); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
-    .page2 {
+
+    #page2 {
       background: linear-gradient(135deg, #ffe6f0, #d6f5ff);
       color: #333;
       flex-direction: column;
@@ -68,29 +71,37 @@
       padding: 2rem;
       overflow-y: auto;
     }
+
     .title {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: bold;
       margin-bottom: 1rem;
       animation: float 2s ease-in-out infinite;
     }
-    .nickname {
-      font-size: 1.2rem;
-      color: #ff3399;
-      margin-bottom: 2rem;
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
+
+    .nickname {
+      font-size: 1rem;
+      color: #ff3399;
+      margin-bottom: 1.2rem;
+    }
+
     .wish {
       background-color: #fff;
       padding: 1.5rem;
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 500px;
+      max-width: 480px;
       line-height: 1.6;
       text-align: center;
       margin-bottom: 2rem;
     }
+
     .next-btn {
-      margin-top: 1.5rem;
       padding: 0.6rem 1.2rem;
       font-size: 1rem;
       border: none;
@@ -99,33 +110,10 @@
       color: white;
       cursor: pointer;
     }
-    .page4 {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      background-color: #000;
-    }
-    .album-container {
-      width: 90%;
-      max-width: 600px;
-      position: relative;
-    }
-    .album-container img {
-      width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 0 12px rgba(255,255,255,0.3);
-      margin-bottom: 1rem;
-      animation: fadeIn 1s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
   </style>
 </head>
 <body>
+
   <div class="page active" id="page1">
     <div class="pdd-box">
       <h1>🎁 恭喜你获得生日惊喜红包 🎁</h1>
@@ -134,7 +122,7 @@
     </div>
   </div>
 
-  <div class="page page2" id="page2">
+  <div class="page" id="page2">
     <div class="title">🎉 生日快乐，洁儒！ 🎉</div>
     <div class="nickname">aka 圆圆 / 水牛 / 莽夫</div>
     <div class="wish">
@@ -147,47 +135,5 @@
       心态王者，躺赢就行！<br><br>
       爱与真诚，相约相伴～❤️
     </div>
-    <button class="next-btn" onclick="goToPage(4)">📸 看回忆照片集锦</button>
+    <button class="next-btn" onclick="goToPage(3)">🎮 打个游戏再继续！</button>
   </div>
-
-  <div class="page page4" id="page4">
-    <div class="album-container" id="album"></div>
-  </div>
-
-  <script>
-    function goToPage(n) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page' + n).classList.add('active');
-    }
-
-    const albumImgs = [
-      '1c2fb066897ae0cf2230e3c348a5f11.jpg',
-      '2f2138afbdfdc758c44289f00bf84ec.jpg',
-      '41f3767c9bf570246b5e38c4ed180de.jpg',
-      '47d821175970a7a67b822673323139b.jpg',
-      '80a118a5a002ab1d449ad1df1b1512c.jpg',
-      '213f37cd01a254a3d7263f95daab0e8.jpg',
-      '816f7e02481dd9bfdb966a9da61bf13.jpg',
-      '4289d719e279ad9b548e2bd2da60423.jpg',
-      'd497b603d2924931ec68c42377f8614.jpg',
-      'eebe5597020da1e93abdf0d7e56b558.jpg'
-    ];
-
-    let albumIndex = 0;
-    function showAlbum() {
-      const container = document.getElementById('album');
-      const img = document.createElement('img');
-      img.src = albumImgs[albumIndex];
-      container.innerHTML = '';
-      container.appendChild(img);
-      albumIndex = (albumIndex + 1) % albumImgs.length;
-    }
-
-    setInterval(() => {
-      if (document.getElementById('page4').classList.contains('active')) {
-        showAlbum();
-      }
-    }, 2500);
-  </script>
-</body>
-</html>
