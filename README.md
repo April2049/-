@@ -259,3 +259,60 @@
       alert("游戏结束！你的得分是：" + score);
     }
   </script>
+  <style>
+    #page4 {
+      background-color: #000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .album-container {
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .album-container img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+
+  <div class="page" id="page4">
+    <h2 style="color:white; margin-bottom: 1rem;">🎬 去年回忆相册 🎬</h2>
+    <div class="album-container" id="album"></div>
+  </div>
+
+  <script>
+    function goToPage(n) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + n).classList.add('active');
+    }
+
+    const albumImgs = [
+      '1c2fb066897ae0cf2230e3c348a5f11.jpg',
+      '2f2138afbdfdc758c44289f00bf84ec.jpg',
+      '41f3767c9bf570246b5e38c4ed180de.jpg',
+      '47d821175970a7a67b822673323139b.jpg',
+      '80a118a5a002ab1d449ad1df1b1512c.jpg',
+      '213f37cd01a254a3d7263f95daab0e8.jpg',
+      '816f7e02481dd9bfdb966a9da61bf13.jpg',
+      '4289d719e279ad9b548e2bd2da60423.jpg',
+      'd497b603d2924931ec68c42377f8614.jpg',
+      'eebe5597020da1e93abdf0d7e56b558.jpg'
+    ];
+
+    let albumIndex = 0;
+    function showAlbum() {
+      const container = document.getElementById('album');
+      const img = document.createElement('img');
+      img.src = albumImgs
